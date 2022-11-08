@@ -1,0 +1,38 @@
+
+th, td {
+    border: 1px solid #F4AC93;
+    padding: 1px 5px;
+    margin: 2px;
+}
+th {
+    text-align: center;
+    font-size: medium;
+}
+td {
+    background-color: #FFF7E7;
+    font-size: medium;
+}
+thead {
+    background-color: #00416C;
+    color: white;
+}
+h1{
+    color: #2a2a2a;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+p{
+    font-size: medium;
+}
+.btndlt{
+    padding: 0;
+    border: none;
+    background: none;
+    color: #337ab7;
+    outline: none;
+    font-weight: bold;
+    }
+.btndlt:hover {
+    color: #23527c;
+    text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+<app-header></app-header>
+<br>
+<div class="container">
+<h1>Manager Management </h1> 
+<p>Please find all Utility Aid users below. You can edit these or delete them by using the links in each row.</p>
+<div class="container home">
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>     
+        <tr *ngFor="let user of managerlist; index as i">
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td><button class="btndlt" (click)="editManager(user._id)">Edit</button></td>
+            <td><button class="btndlt" (click)="deleteManager(user._id)">Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <br>
+</div>
+</div>

@@ -1,0 +1,65 @@
+div.accountInfo {
+    width: 42%;
+}
+fieldset {
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+legend {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+    width: auto;;
+    border: none;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+fieldset label {
+    display: block;
+    font-weight: normal;
+}
+input.textEntry {
+    width: 320px;
+    border: 1px solid #ccc;
+    height: auto;
+    /* margin-bottom: 10px; */
+}
+h4{
+    margin-top: 50px;
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+p{
+    font-size: 1.1em;
+}
+label{
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+/* .text{
+    width: 75%;
+    font-size: 16px;
+    padding: 2px;
+    color: #212529;
+    border: 1px solid #ced4da;
+    height: auto;
+  } */
+  .textselect{
+    width: 75%;
+    font-size: 16px;
+    padding: 2px;
+    color: #212529;
+    border: 1px solid #ced4da;
+    height: 27px;
+  }
+  .pull-right {
+    float: right!important;
+    /* margin-right: 20%; */
+    margin-top: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+} 

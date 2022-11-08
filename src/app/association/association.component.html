@@ -1,0 +1,29 @@
+<app-header></app-header>
+<br>
+<div class="container">
+    <h1>
+        Create new Assocation
+    </h1>
+    <br><br>
+    <form  [formGroup]="form">
+        <div class="accountInfo">
+        
+            <fieldset class="login" style="width: 40%;">
+            <div class="outer">
+                <legend  style="margin-top: -50px; background-color: #FFFFFF; width: 140px;" >Association Name</legend>
+
+                <div class="p">
+                    <label>Association Name:</label>
+                    <input name="association" formControlName="association" type="text" id="association" class="textEntry" [ngClass]="{ 'is-invalid': submitted && f.association.errors}">
+                   <div *ngIf="submitted && f.association.errors">
+                      <div class="error" *ngIf="f.association.errors.required">Please enter association!</div>
+                  </div>
+                </div>
+            </div>
+            </fieldset>      
+            <p class="submitButton">
+                <input type="submit" value="Save Details" class="pull-right" (click)="addassociation()">
+            </p>
+        </div>
+    </form>
+</div>

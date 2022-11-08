@@ -1,0 +1,129 @@
+<app-header></app-header>
+<br>
+<div class="container">
+        <form [formGroup]="searchForm" (ngSubmit)="searchClick()" style="background-color: #A3CFDC;">
+            <div class="row backColor">
+                <div class="row col-md-6">
+                    <div class="col-md-4">Added By:</div>
+                    <div class="col-md-8">
+                        <select #ggg (change)="changeUser($event)" name="addedBy" id="addedBy"
+                            formControlName="createdBy">
+                            <option value="">Any</option>
+                            <option [value]="user.username" *ngFor="let user of userlist">{{user.username}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Status</div>
+                    <div class="col-md-8"><select name="status" id="status" formControlName="status">
+                            <option value="">Any</option>
+                            <option value="1">1- Void Property Details Added</option>
+                            <option value="2">2- Supplier Info/Card Info Added</option>
+                            <option value="3">3- New Tenant Details Added</option>
+                            <option value="4">4- Void Property Complete</option>
+                        </select></div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Address</div>
+                    <div class="col-md-8"><input name="propertyAddress" type="text" id="propertyAddress"
+                            class="textEntry" formControlName="propertyAddress">
+                    </div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Postcode</div>
+                    <div class="col-md-8"><input name="propertyPostCode" formControlName="propertyPostCode" type="text"
+                        id="propertyPostCode" class="textEntry">
+                    </div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Creation Date From:</div>
+                    <div class="col-md-8"><input name="createdFrom" formControlName="createdFrom" type="date"
+                            id="createdFrom" class="textEntry">
+                    </div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Creation Date To:</div>
+                    <div class="col-md-8"><input name="createdTo" formControlName="createdTo" type="date" id="createdTo"
+                            class="textEntry"></div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Id</div>
+                    <div class="col-md-8"><input name="uniqueNo" formControlName="uniqueNo" type="text" id="uniqueNo"
+                            class="textEntry"></div>
+                </div>
+                <div class="row col-md-6">
+                    <div class="col-md-4">Cost Centre/UPRN</div>
+                    <div class="col-md-8"><input name="costCentre" formControlName="costCentre" type="text"
+                    id="costCentre" class="textEntry"></div>
+                </div>
+            </div>
+            <button type="submit" class="btnSearch">Search</button>
+        </form>
+    <br><br>
+
+    <table style="width: 100%">
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" color="#fff" type="ball-fusoihusion" [fullScreen]="true"> 
+            <div class="loader"></div>      
+        </ngx-spinner> 
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Creation Date</th>
+                    <th>Void Date</th>
+                    <th>Address</th>
+                    <th>Postcode</th>
+                    <th>Association</th>
+                    <th>Cost Centre/UPRN</th>
+                    <th>Added By</th>
+                    <th *ngIf="currentUserType==0 || currentUserType==3 || currentUserType==2">Edit</th>
+                    <th *ngIf="currentUserType==0 || currentUserType==3">Delete</th>
+                    <th *ngIf="currentUserType==1">View</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let property of propertylist">
+                    <td>{{property.uniqueNo}}</td>
+                    <td>{{property.createdDate*1000 |date: 'dd-MMM-yyyy hh:mm a'}}</td>
+                    <td>{{property.voiddate |date: 'dd-MMM-yyyy'}}</td>
+                    <td>{{property.propertyAddress}}</td>
+                    <td>{{property.propertyPostCode}}</td>
+                    <td>{{extractassociation(property.association)}}</td>
+                    <td>{{property.costCentre}}</td>
+                    <td>{{extractUsername(property.createdBy)}}</td>
+                    <td class="btndlt" *ngIf="currentUserType==0 || currentUserType==3 || currentUserType==2"><a (click)="editProperty(property._id)">Edit</a></td>
+                    <td class="btndlt" *ngIf="currentUserType==0 || currentUserType==3"><a (click)="deleteUser(property._id)">Delete</a></td>
+                    <td *ngIf="currentUserType==1">
+                        <span class="btndlt" *ngIf="property.status==1 || property.status==2"><a (click)="editProperty(property._id)">Edit</a></span>
+                        <span class="btndlt" *ngIf="property.status==3 || property.status==4"><a (click)="viewProperty(property._id)">View</a></span>
+                    </td>  
+                    <td  
+         
+                        style="background-color:Black;">
+                        <div class="yel1" *ngIf="property.status==1">{{property.status}}</div>
+                        <div class="yel2" *ngIf="property.status==2">{{property.status}}</div>
+                        <div class="yel3" *ngIf="property.status==3">{{property.status}}</div>
+                        <div class="yel4" *ngIf="property.status==4">{{property.status}}</div>
+                    </td>                     
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" *ngFor="let name of btnNames" [ngClass]="{'active': isCurrentpage(name)}">
+                    <a class="page-link" (click)="btnClick(name)" tabindex="-1">{{name}}</a>
+                </li>
+            </ul>
+        </nav>
+
+</div>
+<hr>
+<div class="container key">
+    <h4>Search Summary: Total Voids: {{count}}</h4>
+    <h4>Status Key</h4>
+    <div class="col-md-3"><span class="yel1">1</span> Void Property Details</div>
+    <div class="col-md-3"><span class="yel2">2</span> Supplier Info/Card Info</div>
+    <div class="col-md-3"><span class="yel3">3</span> New Tenant Details Added</div>
+    <div class="col-md-3"><span class="yel4">4</span> Void Property Complete</div>
+</div>

@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="container home">
+    <div class="accountInfo" style="padding-bottom: 100px">
+        <form [formGroup]="editclientform">
+            <fieldset class="clientform">
+                <legend style="margin-top: -33px; background-color: #FFFFFF; width: 180px;">Edit Account Information</legend>
+                <div>
+                    <label>Username:</label>
+                    <input formControlName="username" type="text" id="username" class="textEntry" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"> *
+                    <div *ngIf="submitted && f.username.errors">
+                        <div class="error" *ngIf="f.username.errors.required">Username is required!</div>
+                    </div>
+                </div>
+                <div>
+                    <label>E-mail:</label>
+                    <input name="email"  formControlName="email" type="text" id="email" class="textEntry" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> *
+                    <div class="error" *ngIf="submitted && f.email.errors">
+                        <div *ngIf="f.email.errors.required">Email ID is required!</div>
+                        <div *ngIf="f.email.errors.pattern">Email must be a valid email address!</div>
+                     </div>
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input name="password" formControlName="password" type="password" id="password" class="textEntry" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> *
+                    <div class="error" *ngIf="submitted && f.password.errors">
+                        <div *ngIf="f.password.errors.required">Password is required!</div>
+                        <div *ngIf="f.password.errors.minlength">You have to enter at least 6 digit!</div>
+                     </div>
+                </div>
+                <div>
+                    <label>Confirm Password:</label>
+                    <input name="confirmPassword" [(ngModel)]="clientlist.password" formControlName="Confirmpassword" type="password" id="confirmPassword" class="textEntry" [ngClass]="{ 'is-invalid': submitted && f.Confirmpassword.errors }"> *
+                    <div class="error" *ngIf="submitted && f.Confirmpassword.errors">
+                        <div *ngIf="f.Confirmpassword.errors.required">Confirm Password is required!</div>
+                        <div *ngIf="f.Confirmpassword.errors.mismatch">Password does not match!</div>
+                     </div>
+                </div>
+
+                <div class="client">
+                    <h4>Additional Information</h4>
+                    <div>
+                        <label>Related Association:</label>
+                        <select class="textselect" formControlName="relatedAssociation" name="relatedAssociation" id="relatedAssociation">
+                            <option *ngFor="let association of associationlist;" [value]='association._id'>{{association.association}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Associated User:</label>        
+                            <select class="textselect" formControlName="associatedUser">
+                                <option [value]='association._id' *ngFor="let association of associatedUserlist;">{{association.username}}</option>
+                            </select>
+                    </div>
+                    <div>
+                        <label>Address:</label>
+                        <textarea class="form-control" formControlName="address" rows="4" cols="50" name="address" id="address"
+                            class="textEntry"></textarea>
+                    </div>
+                    <div>
+                        <label>Client Name:</label>
+                        <input class="form-control" formControlName="clientName" name="clientName" type="text" id="clientName" class="textEntry"
+                               value="">
+                    </div>
+                    <div>
+                        <label>Telephone Number:</label>
+                        <input class="form-control" formControlName="tel" name="tel" type="text" id="tel" class="textEntry" value="">
+                    </div>
+                    <div>
+                        <label>Contract Date:</label>
+                        <input class="form-control" formControlName="contractDate" name="contractDate" type="text" id="contractDate" class="textEntry"
+                               value="">
+                    </div>
+                    <div>
+                        <label>Notes:</label>
+                        <textarea class="form-control" formControlName="notes" rows="4" cols="50" name="notes" id="notes"
+                        class="textEntry"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="submitButton">
+                <input type="submit" value="Save Details"
+                id="submit" class="pull-right" (click)="editClientDetails();">
+            </div>
+        </form>
+    </div>
+</div>

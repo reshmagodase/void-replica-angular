@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face { font-family: vag_rounded_bold-webfont; src: url('assets/fonts/vag_rounded_thin-webfont.ttf'); } 
+
+*{
+    font-family: vag_rounded_bold-webfont
+}
+.error {
+    color: hsl(354, 93%, 52%);
+    font-weight: 300;
+    /* text-decoration: underline; */
+}

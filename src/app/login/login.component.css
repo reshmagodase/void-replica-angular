@@ -1,0 +1,86 @@
+.navbar {
+    margin-top: 20px;
+    border: none;
+    border-radius: 0px;
+    height: 42px;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+   color: #dde4ec;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+   color: #dde4ec;
+}
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    width: -webkit-fill-available;
+    background-color: #465c71;
+    color: white;
+    border: none;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    background-color: #465c71;
+ }
+h1 {
+    color: #2a2a2a;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+    
+h2 {
+    color: #2a2a2a;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+div.accountInfo {
+    width: 100%;
+}
+
+fieldset {
+        /* margin: 2em 0px; */
+    padding: 2em;
+    border: 1px solid #ccc;
+}
+    
+legend {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+    width: auto;;
+    border: none;
+    margin-bottom: 10px;
+    margin-top: 0px;
+
+}
+    
+fieldset label {
+    display: block;
+    font-weight: normal;
+}   
+input.textEntry {
+    width: 320px;
+    border: 1px solid #ccc;
+    height: 25px;
+}
+.pull-right {
+    float: right!important;
+    margin-right: 60%;
+    margin-top: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+} 
+    .navbar-nav > li > a {
+        color: #dde4ec;
+        /* margin-left: 105px; */
+    }
+    /* div.accountInfo {
+        width: 80%;  
+    } */
+   label{
+    margin-top: 15px;
+    font-size: 15px;
+   }
+   p{
+    font-size: 16px;
+   }
+   ul>li{
+    font-size: 17px;
+   }
